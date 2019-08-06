@@ -54,7 +54,7 @@ public class ControladorAF {
            for(int j = 0; j <numEstados+2 ; j++){
                matriz[i][j]=(String)tblAutomata.getValueAt(i, j);             
                System.out.println("HI"+matriz[i][j]);
-                          
+               System.out.println("sjhfgjsahjfsfd");
             }
         }  
          
