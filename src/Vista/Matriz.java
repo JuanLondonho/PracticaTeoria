@@ -6,26 +6,22 @@
 package Vista;
 
 import Controlador.*;
+
 /**
  *
  * @author juanclg
  */
 public class Matriz extends javax.swing.JFrame {
-    ControladorAF ctr;
+    
+    ControladorAF ctr= ControladorAF.getCtr();
+   
     /**
      * Creates new form Matriz
      */
     public Matriz() {
-        initComponents();
-        tblMatriz.getTableHeader().setVisible(false);
-        tblMatriz.setOpaque(false);
-        jScrollPane.setVisible(false);
-        ctr = new ControladorAF();
-        tblMatriz = ctr.crearMatriz();
-        
-        
-        
-        
+       initComponents();
+       tblMatriz= ctr.crearTabla();
+       jScrollPane.setViewportView(tblMatriz);          
     }
 
     /**
@@ -39,6 +35,7 @@ public class Matriz extends javax.swing.JFrame {
 
         jScrollPane = new javax.swing.JScrollPane();
         tblMatriz = new javax.swing.JTable();
+        btnIngreso = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,7 +50,16 @@ public class Matriz extends javax.swing.JFrame {
 
             }
         ));
+        tblMatriz.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tblMatriz.setFocusable(false);
         jScrollPane.setViewportView(tblMatriz);
+
+        btnIngreso.setText("IngresarAF");
+        btnIngreso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,15 +68,27 @@ public class Matriz extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(266, Short.MAX_VALUE))
+                .addGap(65, 65, 65)
+                .addComponent(btnIngreso)
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addComponent(btnIngreso)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoActionPerformed
+        // TODO add your handling code here:
+        
+        ctr.crearMatriz(tblMatriz);
+    }//GEN-LAST:event_btnIngresoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -108,6 +126,7 @@ public class Matriz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnIngreso;
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JTable tblMatriz;
     // End of variables declaration//GEN-END:variables

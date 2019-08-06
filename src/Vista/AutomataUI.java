@@ -15,11 +15,14 @@ import Controlador.*;
  * @author juanclg
  */
 public class AutomataUI extends javax.swing.JFrame {
+    
+    ControladorAF ctr= ControladorAF.getCtr();
 
-    ControladorAF ctr;
+  
     public AutomataUI() {
         initComponents();
-        ctr = new ControladorAF();
+        
+        
     }
 
     /**
@@ -121,6 +124,7 @@ public class AutomataUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(!txtNumeroEntradas.getText().equals("") &&  !txtNumeroEstados.getText().equals("")){
             this.setVisible(false);
+           
             ctr.entradasTabla(Integer.parseInt(txtNumeroEntradas.getText()), Integer.parseInt(txtNumeroEstados.getText()));
             Matriz au = new Matriz();
             au.setVisible(true);
