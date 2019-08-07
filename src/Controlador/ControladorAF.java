@@ -6,6 +6,7 @@
 package Controlador;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import Modelo.*;
 /**
  *
  * @author juanclg
@@ -16,6 +17,7 @@ public class ControladorAF {
     int numEntradas;
     int numEstados;
     JTable tblMatriz;
+    Detectar m=new Detectar();
      
     private ControladorAF() {} 
      
@@ -54,10 +56,12 @@ public class ControladorAF {
            for(int j = 0; j <numEstados+2 ; j++){
                matriz[i][j]=(String)tblAutomata.getValueAt(i, j);             
                System.out.println("HI"+matriz[i][j]);
+               
                           
             }
         }  
          
+         System.out.println("IMPRIMI"+m.reconocer(matriz));
            
      }
      

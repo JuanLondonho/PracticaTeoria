@@ -38,10 +38,10 @@ public class Detectar {
     
 
     public boolean validarEstado(String estado) {
-        if ((estado.indexOf("+")) != -1 && ((estado.startsWith("+") 
-            && estado.endsWith("+")) == false)) {
+        if ((estado.indexOf("-")) != -1 && ((estado.startsWith("-") 
+            && estado.endsWith("-")) == false)) {
             for (int n = 1; n < estado.length() - 1; n++) {
-                if (estado.charAt(n) == '+' && estado.charAt(n + 1) == '+') {
+                if (estado.charAt(n) == '-' && estado.charAt(n + 1) == '-') {
                     return false;
                     
                 }else 

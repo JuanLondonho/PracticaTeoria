@@ -51,7 +51,6 @@ public class Matriz extends javax.swing.JFrame {
             }
         ));
         tblMatriz.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        tblMatriz.setFocusable(false);
         jScrollPane.setViewportView(tblMatriz);
 
         btnIngreso.setText("IngresarAF");
@@ -88,6 +87,7 @@ public class Matriz extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         ctr.crearMatriz(tblMatriz);
+       
     }//GEN-LAST:event_btnIngresoActionPerformed
 
     /**
