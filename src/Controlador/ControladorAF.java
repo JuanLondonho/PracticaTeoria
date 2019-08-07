@@ -6,6 +6,8 @@
 package Controlador;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import Modelo.*;
+import java.util.ArrayList;
 /**
  *
  * @author juanclg
@@ -52,11 +54,19 @@ public class ControladorAF {
          
         for(int i = 0; i <numEntradas+1; i++){ 
            for(int j = 0; j <numEstados+2 ; j++){
-               matriz[i][j]=(String)tblAutomata.getValueAt(i, j);             
-               System.out.println("HI"+matriz[i][j]);
-               System.out.println("sjhfgjsahjfsfd");
+               matriz[i][j]=(String)tblAutomata.getValueAt(i, j);
             }
         }  
+        
+        ConvertirADeterminisco m = new ConvertirADeterminisco();
+        ArrayList a = m.ConvertirADeterminisco(matriz);
+        
+        for(int i = 0; i<a.size(); i++){
+            System.out.println(a.get(i));
+        }
+        
+        
+        
          
            
      }
