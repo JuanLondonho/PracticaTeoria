@@ -36,6 +36,8 @@ public class Matriz extends javax.swing.JFrame {
         jScrollPane = new javax.swing.JScrollPane();
         tblMatriz = new javax.swing.JTable();
         btnIngreso = new javax.swing.JButton();
+        cbxOption = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,24 +63,42 @@ public class Matriz extends javax.swing.JFrame {
             }
         });
 
+        cbxOption.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Or", "And" }));
+        cbxOption.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxOptionActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Seleccione la operacion en caso de multiples entradas");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
+                .addComponent(jScrollPane)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(77, 77, 77)
                 .addComponent(btnIngreso)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addGap(78, 78, 78)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(cbxOption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(401, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(btnIngreso)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(cbxOption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnIngreso))
+                .addGap(32, 32, 32))
         );
 
         pack();
@@ -87,8 +107,12 @@ public class Matriz extends javax.swing.JFrame {
     private void btnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoActionPerformed
         // TODO add your handling code here:
         
-        ctr.crearMatriz(tblMatriz);
+        ctr.crearMatriz(tblMatriz, cbxOption.getSelectedIndex());
     }//GEN-LAST:event_btnIngresoActionPerformed
+
+    private void cbxOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxOptionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxOptionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,6 +151,8 @@ public class Matriz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngreso;
+    private javax.swing.JComboBox<String> cbxOption;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JTable tblMatriz;
     // End of variables declaration//GEN-END:variables

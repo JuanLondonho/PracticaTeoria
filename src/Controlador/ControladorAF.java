@@ -49,7 +49,7 @@ public class ControladorAF {
        
     }
     
-     public void crearMatriz(JTable tblAutomata){
+     public void crearMatriz(JTable tblAutomata, int operacion){
         String [][] matriz = new String[numEntradas+1][numEstados+2];
          
         for(int i = 0; i <numEntradas+1; i++){ 
@@ -59,7 +59,7 @@ public class ControladorAF {
         }  
         
         ConvertirADeterminisco m = new ConvertirADeterminisco();
-        ArrayList a = m.ConvertirADeterminisco(matriz);
+        ArrayList a = m.ConvertirADeterminisco(matriz, operacion);
         
         for(int i = 0; i<a.size(); i++){
             System.out.println(a.get(i));

@@ -20,11 +20,11 @@ public class ConvertirADeterminisco {
     int estadoActual = -1;
     
     
-    public ArrayList ConvertirADeterminisco(String[][] matriz){
+    public ArrayList ConvertirADeterminisco(String[][] matriz, int operacion){
         this.matriz = matriz;
         numEntradas = matriz[0].length - 2;
         conversionRecursiva(estadosIniciales());
-        return automata;
+        return automataConEstados(operacion);
         
     }
     
@@ -135,6 +135,47 @@ public class ConvertirADeterminisco {
                 estadoActual++;
             }
         }
+    }
+    
+    public ArrayList automataConEstados(int operacion){
+        String estadoAceptacion;
+        for(int i = 0; i < automata.size(); i++){
+            estadoAceptacion = ""+operacion;
+            String[] a = automata.get(i).split("/");
+            String[] b = a[0].split("-");
+            for(int j = 1; j < matriz.length; j++){
+                for(int k = 0; k < b.length; k++){
+                    
+                    if(matriz[j][0].equals(b[k])){
+                        if(operacion == 0){
+                           if(matriz[j][matriz[0].length-1].equals("1")){
+                                estadoAceptacion = "1";
+                                break;
+                           }
+                        }else{
+                            estadoAceptacion = "1";
+                            if(matriz[j][matriz[0].length-1].equals("0")){
+                                estadoAceptacion = "0";
+                                break;
+                           }
+                        }
+                            
+                    }
+                }
+                if(operacion == 0 ){
+                    if(estadoAceptacion.equals("1")){
+                        break;
+                    }
+                }else{
+                    if(estadoAceptacion.equals("0")){
+                        break;
+                    }
+                }
+                    
+            }
+            automata.set(i, automata.get(i).concat("/"+estadoAceptacion));
+        }
+        return automata;
     }
 }
 
