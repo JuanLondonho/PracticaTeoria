@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,51 +14,42 @@ import javax.swing.JOptionPane;
  */
 public class Simplificar {
     
-    int contA=0;
-    int contN=0;
+    ArrayList<String> particiones= new ArrayList<String>();
     
 
     public Simplificar() {
     }
-    
-    public void tamaño(String [][]matriz){
-         for(int i=0;i<matriz.length;i++){
-            int j=matriz[i].length;
-            String estado=matriz[i][j];  
-              if(estado.compareTo("0")==0){
-                  contA=contA++;
-              }else if(estado.compareTo("1")==0){
-                  contN=contN++;
-              }else
-                JOptionPane.showMessageDialog(null, "Ingrese 1 si el estado es de aceptacion o 0 si no lo es");
-        }
-    
-    }
-    
-    public void separarEstado(String[][] matriz) {
-        String[] aceptacion = new String[contA];
-        String[] noAceptacion = new String[contN];
-        int cont1 = 0;
-        int cont2 = 0;
-
-        for (int i = 1; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-                String estado = matriz[i][matriz[i].length];
-                if (estado.compareTo("0") == 0) {
-                    noAceptacion[cont1] = matriz[1][j];
-                    cont1++;
-
-                } else if (estado.compareTo("1") == 0) {
-                    aceptacion[cont2] = matriz[1][j];
-                    cont2++;
-
-                } else {
-                   JOptionPane.showMessageDialog(null, "Ingrese 1 si el estado es de aceptacion o 0 si no lo es");
-                }
-
+   
+    public String [][]matrizDeterministico(ArrayList<String> deterministico){
+        String[]estado =deterministico.get(0).split("/");
+        String matrizDeterministico [][]= new String [deterministico.size()][estado.length];
+       
+        for(int i=0;i<deterministico.size();i++){
+            estado=(deterministico.get(i)).split("/");
+            for(int j=0;j<estado.length;j++){
+                matrizDeterministico[i][j]=estado[j];
             }
         }
+    return matrizDeterministico;
+    
     }
     
+    public void particionar(String[][] matriz){
+       
+        
+        }
+   
+    }    
+   
     
+         
+    
+    
+    
+    
+    
+    
+    
+    
+
 }

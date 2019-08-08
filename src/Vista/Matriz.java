@@ -36,6 +36,7 @@ public class Matriz extends javax.swing.JFrame {
         jScrollPane = new javax.swing.JScrollPane();
         tblMatriz = new javax.swing.JTable();
         btnIngreso = new javax.swing.JButton();
+        btnsalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,6 +61,13 @@ public class Matriz extends javax.swing.JFrame {
             }
         });
 
+        btnsalir.setText("Salir");
+        btnsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -68,7 +76,9 @@ public class Matriz extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65)
-                .addComponent(btnIngreso)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnIngreso)
+                    .addComponent(btnsalir))
                 .addContainerGap(115, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -77,6 +87,8 @@ public class Matriz extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(87, 87, 87)
                 .addComponent(btnIngreso)
+                .addGap(215, 215, 215)
+                .addComponent(btnsalir)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -89,6 +101,11 @@ public class Matriz extends javax.swing.JFrame {
         ctr.crearMatriz(tblMatriz);
        
     }//GEN-LAST:event_btnIngresoActionPerformed
+
+    private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btnsalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,6 +144,7 @@ public class Matriz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngreso;
+    private javax.swing.JButton btnsalir;
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JTable tblMatriz;
     // End of variables declaration//GEN-END:variables
