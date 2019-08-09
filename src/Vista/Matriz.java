@@ -12,16 +12,16 @@ import Controlador.*;
  * @author juanclg
  */
 public class Matriz extends javax.swing.JFrame {
-    
+
     ControladorAF ctr= ControladorAF.getCtr();
-   
+
     /**
      * Creates new form Matriz
      */
     public Matriz() {
        initComponents();
        tblMatriz= ctr.crearTabla();
-       jScrollPane.setViewportView(tblMatriz);          
+       jScrollPane.setViewportView(tblMatriz);
     }
 
     /**
@@ -53,7 +53,6 @@ public class Matriz extends javax.swing.JFrame {
             }
         ));
         tblMatriz.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        tblMatriz.setFocusable(false);
         jScrollPane.setViewportView(tblMatriz);
 
         btnIngreso.setText("IngresarAF");
@@ -106,7 +105,7 @@ public class Matriz extends javax.swing.JFrame {
 
     private void btnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoActionPerformed
         // TODO add your handling code here:
-        
+
         ctr.crearMatriz(tblMatriz, cbxOption.getSelectedIndex());
     }//GEN-LAST:event_btnIngresoActionPerformed
 
@@ -121,7 +120,7 @@ public class Matriz extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
