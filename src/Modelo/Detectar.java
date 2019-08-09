@@ -68,6 +68,17 @@ public class Detectar {
      return true;
     }
     
+//    public boolean validarEstadoAceptacion(String[][] matriz){
+//        
+//        for(int i=0;i<matriz.length;i++){
+//            if(matriz[i][matriz[i].length]!="0"||matriz[i][matriz[i].length]!="1"){
+//                return false;
+//            }
+//        }
+//        
+//    return true;
+//    }
+//    
     
     
 
