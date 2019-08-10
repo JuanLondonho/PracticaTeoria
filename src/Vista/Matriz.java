@@ -26,7 +26,7 @@ public class Matriz extends javax.swing.JFrame {
        jScrollPane.setViewportView(tblMatriz);
        //tblMatriz.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
        jScrollPane.enable(false);
-       txtsecuencia.setVisible(false);
+       txtSecuencia.setVisible(false);
        btnSecuencia.setVisible(false);
        jLabel2.setVisible(false);
     }
@@ -49,8 +49,9 @@ public class Matriz extends javax.swing.JFrame {
         jScrollPane = new javax.swing.JScrollPane();
         tblMatriz = new javax.swing.JTable();
         btnSecuencia = new javax.swing.JButton();
-        txtsecuencia = new javax.swing.JTextField();
+        txtSecuencia = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        lblResultado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -108,10 +109,6 @@ public class Matriz extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSalir)
-                .addGap(23, 23, 23))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(85, 85, 85)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,19 +118,27 @@ public class Matriz extends javax.swing.JFrame {
                 .addComponent(btnIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 997, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(79, 79, 79)
                         .addComponent(btnSimplificar)
                         .addGap(1, 1, 1)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtsecuencia, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnSecuencia))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 997, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtSecuencia, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(btnSecuencia))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(175, 175, 175)
+                                .addComponent(btnSalir)
+                                .addGap(11, 11, 11)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -157,7 +162,9 @@ public class Matriz extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(btnSimplificar)
                                 .addComponent(jLabel2)
-                                .addComponent(txtsecuencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtSecuencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblResultado)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -205,7 +212,7 @@ public class Matriz extends javax.swing.JFrame {
         jScrollPane.enable(false);
         jScrollPane.setViewportView(tblMatriz);
         btnSimplificar.setVisible(false);
-        txtsecuencia.setVisible(true);
+        txtSecuencia.setVisible(true);
         btnSecuencia.setVisible(true);
         jLabel2.setVisible(true);
         
@@ -217,7 +224,7 @@ public class Matriz extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnSecuenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSecuenciaActionPerformed
-        // TODO add your handling code here:
+        lblResultado.setText(ctr.detectar(txtSecuencia.getText()));
     }//GEN-LAST:event_btnSecuenciaActionPerformed
 
     /**
@@ -265,7 +272,8 @@ public class Matriz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane;
+    private javax.swing.JLabel lblResultado;
     private javax.swing.JTable tblMatriz;
-    private javax.swing.JTextField txtsecuencia;
+    private javax.swing.JTextField txtSecuencia;
     // End of variables declaration//GEN-END:variables
 }

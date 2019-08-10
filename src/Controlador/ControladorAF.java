@@ -22,7 +22,7 @@ public class ControladorAF {
     String [][] matriz;
     ArrayList<String> a;
     ConvertirADeterminisco m = new ConvertirADeterminisco();
-    
+    String[][] matrizb;
     
     Simplificar n = new Simplificar();
 
@@ -141,7 +141,7 @@ public class ControladorAF {
      
      public JTable simplificarMatriz(){
         System.out.println("SIMPLIFICADA: \n");
-        String[][] matrizb = n.matrizDeterministico(a);
+        matrizb = n.matrizDeterministico(a);
         a = n.simplificarAutomata(a, matrizb);
         matrizb = n.convertirMatrizFinal(a, matrizb, matriz);
         iniciales = n.estadosIniciales(matriz);
@@ -184,6 +184,11 @@ public class ControladorAF {
      
      
      
+     }
+     
+     public String detectar(String secuencia){
+         DetectarSecuencia d = new DetectarSecuencia();
+         return d.detectar(matrizb, secuencia, iniciales);
      }
     
 }
