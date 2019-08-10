@@ -6,6 +6,7 @@
 package Vista;
 
 import Controlador.*;
+import javax.swing.JTable;
 
 /**
  *
@@ -23,6 +24,8 @@ public class Matriz extends javax.swing.JFrame {
        tblMatriz= ctr.crearTabla();
        btnSimplificar.setVisible(false);
        jScrollPane.setViewportView(tblMatriz);
+       tblMatriz.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+       tblMatriz.getTableHeader().setVisible(false);
        //jScrollPane.enable(false);
     }
 
