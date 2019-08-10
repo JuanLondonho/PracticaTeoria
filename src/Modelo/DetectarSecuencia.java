@@ -23,7 +23,7 @@ public class DetectarSecuencia {
         for(int i = 0; i < secuencia.length(); i++){
             char c = secuencia.charAt(i);
             for(int j = 1; j < a.length; j++){
-                if(sortString(a[j][0]).equals(sortString(inicial))){
+                if(sortString(a[j][0]).equals(sortString(estadoActual))){
                     for(int k = 1; k < a[0].length-1; k++){
                         if(a[0][k].equals(""+c)){
                             estadoActual= a[j][k];
