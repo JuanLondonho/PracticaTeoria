@@ -130,7 +130,7 @@ public class Simplificar {
         return a;
     }
     
-    public ArrayList<String> estadosIniciales (String[][] matriz, ArrayList<String> a){
+    public String estadosIniciales (String[][] matriz){
         String iniciales = "";
         for(int i = 1; i < matriz.length; i++){
             if(matriz[i][0].indexOf('*') != -1){
@@ -141,23 +141,8 @@ public class Simplificar {
                 }
                 matriz[i][0] = matriz[i][0];
             }
-        }
-        boolean salir = false;
-        for(int i = 0; i < a.size(); i++){
-            String[] partes = a.get(i).split("/");
-            for(int j=0; j < partes.length; j++){
-                if(sortString(partes[j]).equals(sortString(iniciales))){
-                    a.set(i, "*"+a.get(i));
-                    salir = true;
-                    break;
-                }
-            }
-            if(salir){
-                break;
-            }
-        }
-        
-        return a;
+        }   
+    return iniciales;
     }
     
     
@@ -167,4 +152,55 @@ public class Simplificar {
         return new String(tempArray); 
     } 
     
+    public String[][] convertirMatrizFinal(ArrayList<String> a, String[][] matriz, String[][] b){
+        boolean bandera= false;
+        String[][] matrizFinal = new String[a.size()+1][matriz[0].length];
+        for(int i = 0; i < b[0].length; i++){
+            matrizFinal[0][i] = b[0][i];
+        }
+        for(int i=0; i<a.size(); i++){
+            String parte = a.get(i).split("/")[0];
+            for(int k = 0; k < matriz.length; k++){
+                if(sortString(matriz[k][0]).equals(sortString(parte))){
+                    for(int m = 1; m < matriz[0].length-1; m++){
+                        for(int n = 0; n < a.size(); n++){
+                            String[] partes = a.get(n).split("/");
+                            for(int x = 0; x < partes.length-1; x++){
+                                if(sortString(matriz[k][m]).equals(sortString(partes[x]))){
+                                    matrizFinal[i+1][0] = a.get(i).substring(0, a.get(i).length()-2);
+                                    matrizFinal[i+1][m] = a.get(n).substring(0, a.get(n).length()-2);
+                                    bandera = true;
+                                    break;
+                                }
+                            }
+                            
+                            if(bandera){
+                                break;
+                            }
+                        }
+                    }
+                    matrizFinal[i+1][matriz[0].length-1] = a.get(i).split("/")[a.get(i).split("/").length-1];
+                }
+                if(bandera){
+                    break;
+                }
+            }
+            
+            bandera = false;
+        }
+        return matrizFinal;
+    }
+    
+    public String nuevoEstadoInicial(String iniciales, String[][] a){
+        for(int i = 1; i < a.length; i++){
+            String[] partes = a[i][0].split("/");
+            for(int j = 0; j < partes.length; j++){
+                if(sortString(partes[j]).equals(sortString(iniciales))){
+                    return a[i][0];
+                }
+            }
+          
+        }
+        return null;
+    }
 }

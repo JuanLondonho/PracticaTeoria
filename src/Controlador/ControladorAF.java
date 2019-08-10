@@ -16,7 +16,14 @@ public class ControladorAF {
     private static  ControladorAF ctr;
     int numEntradas;
     int numEstados;
+    String iniciales;
     JTable tblMatriz;
+    String [][] matriz;
+    ArrayList<String> a;
+    ConvertirADeterminisco m = new ConvertirADeterminisco();
+    
+    
+    Simplificar n = new Simplificar();
 
     private ControladorAF() {}
 
@@ -35,13 +42,14 @@ public class ControladorAF {
 
 
     public void entradasTabla(int x, int y){
-        numEntradas = x;
-        numEstados = y;
+        numEstados = x;
+        numEntradas = y;
+        matriz = new String[numEstados+1][numEntradas+2];
     }
 
     public JTable crearTabla(){
 
-        tblMatriz = new JTable(numEntradas+1,numEstados+2);
+        tblMatriz = new JTable(numEstados+1,numEntradas+2);
         tblMatriz.getTableHeader().setVisible(false);
 
         return tblMatriz;
@@ -49,39 +57,42 @@ public class ControladorAF {
     }
 
      public void crearMatriz(JTable tblAutomata, int operacion){
-        String [][] matriz = new String[numEntradas+1][numEstados+2];
-
-        for(int i = 0; i <numEntradas+1; i++){
-           for(int j = 0; j <numEstados+2 ; j++){
+        for(int i = 0; i <numEstados+1; i++){
+           for(int j = 0; j <numEntradas+2 ; j++){
                matriz[i][j]=(String)tblAutomata.getValueAt(i, j);
             }
            
         }
-
-
-        ConvertirADeterminisco m = new ConvertirADeterminisco();
+        a = m.ConvertirADeterminisco(matriz, operacion);
+        String[][] matrizb = n.matrizDeterministico(a);
+        iniciales = n.estadosIniciales(matriz);
         
-        ArrayList<String> a = m.ConvertirADeterminisco(matriz, operacion);
+        //Actualizar la tabla JTable de la vista con matrizb y desabilitarla;
         
-        
-        System.out.println("SIN SIMPLIFICAR: \n");
-        
-        for(int i = 0; i<a.size(); i++){
-            System.out.println(a.get(i));
-        }
-        
-        
-        Simplificar n = new Simplificar();
-        
+//        for(int i =0; i < matrizb.length; i++){
+//            for(int j = 0; j < matrizb[0].length; j++){
+//                if(i == 0){
+//                    table.add(matriz[i][j], i, j);
+//                }else{
+//                    if(matrizb[i][j].equals(iniciales)){
+//                        table.add("*"+matrizb[i][j], i, j);
+//                    }else{
+//                        table.add(matrizb[i][j], i, j);
+//                    }
+//                }
+//            }
+//        }
+     }
+     
+     
+     public void simplificarMatriz(){
         System.out.println("SIMPLIFICADA: \n");
-        a = n.simplificarAutomata(a, n.matrizDeterministico(a));
-        a = n.estadosIniciales(matriz, a);
+        String[][] matrizb = n.matrizDeterministico(a);
+        a = n.simplificarAutomata(a, matrizb);
+        matrizb = n.convertirMatrizFinal(a, matrizb, matriz);
+        iniciales = n.estadosIniciales(matriz);
+        iniciales = n.nuevoEstadoInicial(iniciales, matrizb);
         
-        for(int i = 0; i<a.size(); i++){
-            System.out.println(a.get(i));
-        }
-        
-        
-        
+        //Actualizar la tabla  de la vista con matrizb y desabilitarla;
      }
 }

@@ -107,6 +107,7 @@ public class Matriz extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         ctr.crearMatriz(tblMatriz, cbxOption.getSelectedIndex());
+        ctr.simplificarMatriz();
     }//GEN-LAST:event_btnIngresoActionPerformed
 
     private void cbxOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxOptionActionPerformed
