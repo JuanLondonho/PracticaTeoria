@@ -171,12 +171,15 @@ public class Simplificar {
                                     matrizFinal[i+1][m] = a.get(n).substring(0, a.get(n).length()-2);
                                     bandera = true;
                                     break;
+                                }else{
+                                    bandera = false;
                                 }
                             }
                             
                             if(bandera){
                                 break;
                             }
+                            
                         }
                     }
                     matrizFinal[i+1][matriz[0].length-1] = a.get(i).split("/")[a.get(i).split("/").length-1];

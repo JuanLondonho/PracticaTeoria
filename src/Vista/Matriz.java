@@ -24,7 +24,7 @@ public class Matriz extends javax.swing.JFrame {
        tblMatriz= ctr.crearTabla();
        btnSimplificar.setVisible(false);
        jScrollPane.setViewportView(tblMatriz);
-       //tblMatriz.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+       tblMatriz.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
        jScrollPane.enable(false);
        txtSecuencia.setVisible(false);
        btnSecuencia.setVisible(false);
@@ -192,8 +192,8 @@ public class Matriz extends javax.swing.JFrame {
     private void btnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoActionPerformed
         // TODO add your handling code here:
 
-       tblMatriz = ctr.crearMatriz(tblMatriz, cbxOption.getSelectedIndex());
-       jScrollPane.setViewportView(tblMatriz);
+        tblMatriz = ctr.crearMatriz(tblMatriz, cbxOption.getSelectedIndex());
+        jScrollPane.setViewportView(tblMatriz);
         btnSimplificar.setVisible(true);
         btnIngreso.setVisible(false);
         cbxOption.setVisible(false);
