@@ -5,7 +5,6 @@
  */
 package Controlador;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 import Modelo.*;
 import java.util.ArrayList;
 /**
@@ -56,16 +55,33 @@ public class ControladorAF {
            for(int j = 0; j <numEstados+2 ; j++){
                matriz[i][j]=(String)tblAutomata.getValueAt(i, j);
             }
+           
         }
 
-        ConvertirADeterminisco m = new ConvertirADeterminisco();
-        ArrayList a = m.ConvertirADeterminisco(matriz, operacion);
 
+        ConvertirADeterminisco m = new ConvertirADeterminisco();
+        
+        ArrayList<String> a = m.ConvertirADeterminisco(matriz, operacion);
+        
+        
+        System.out.println("SIN SIMPLIFICAR: \n");
+        
         for(int i = 0; i<a.size(); i++){
             System.out.println(a.get(i));
         }
+        
+        
+        Simplificar n = new Simplificar();
+        
+        System.out.println("SIMPLIFICADA: \n");
+        a = n.simplificarAutomata(a, n.matrizDeterministico(a));
+        a = n.estadosIniciales(matriz, a);
+        
+        for(int i = 0; i<a.size(); i++){
+            System.out.println(a.get(i));
+        }
+        
+        
+        
      }
-
-
-
 }

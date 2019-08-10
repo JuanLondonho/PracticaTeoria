@@ -20,8 +20,9 @@ public class ConvertirADeterminisco {
     int estadoActual = -1;
     
     
-    public ArrayList ConvertirADeterminisco(String[][] matriz, int operacion){
-        this.matriz = matriz;
+    public ArrayList<String> ConvertirADeterminisco(String[][] matriz1, int operacion){
+        matriz = new String[matriz1.length][matriz1[0].length];
+        copiarArray(matriz1);
         numEntradas = matriz[0].length - 2;
         conversionRecursiva(estadosIniciales());
         return automataConEstados(operacion);
@@ -137,7 +138,7 @@ public class ConvertirADeterminisco {
         }
     }
     
-    public ArrayList automataConEstados(int operacion){
+    public ArrayList<String> automataConEstados(int operacion){
         String estadoAceptacion;
         for(int i = 0; i < automata.size(); i++){
             estadoAceptacion = ""+operacion;
@@ -176,6 +177,15 @@ public class ConvertirADeterminisco {
             automata.set(i, automata.get(i).concat("/"+estadoAceptacion));
         }
         return automata;
+    }
+    
+    public void copiarArray(String[][] matriz){
+        for(int i = 0; i <matriz.length; i++){
+           for(int j = 0; j < matriz[0].length ; j++){
+               this.matriz[i][j]= matriz[i][j];
+            }
+           
+        }
     }
 }
 
