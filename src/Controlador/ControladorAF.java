@@ -8,6 +8,7 @@ package Controlador;
 import javax.swing.JTable;
 import Modelo.*;
 import java.util.ArrayList;
+import javax.swing.JLabel;
 
 
 /**
@@ -65,14 +66,18 @@ public class ControladorAF {
     }
 
     //Se crea la matriz con la que más adelante se realizarán todas las operaciones de conversión y simplificación
-    public JTable crearMatriz(JTable tblAutomata, int operacion) {
+    public JTable crearMatriz(JTable tblAutomata, int operacion,JLabel detectar) {
         for (int i = 0; i < numEstados + 1; i++) {//Recorre el JTable inicial
             for (int j = 0; j < numEntradas + 2; j++) {
                 matriz[i][j] = (String) tblAutomata.getValueAt(i, j);//Llenar la matriz con los datos ingresados en el jTable
             }
         }
-        
-        System.out.println("NO DETERMINISTICO ?"+dec.reconocer(matriz));
+
+        if (dec.reconocer(matriz) == false) {
+            detectar.setText("Automata deterministico");
+        } else {
+            detectar.setText("Automata no deterministico");
+        }
 
         a = m.ConvertirADeterminisco(matriz, operacion);//Si el automata es no deterministico se convierte a deterministico y se eliminan estados extraños, si es deterministico se eliminan los estados extraños.
         String[][] matrizb = n.matrizDeterministico(a);//Se pasan los datos retornados en el array a a una matriz para luego mostrarlos en un jTable
