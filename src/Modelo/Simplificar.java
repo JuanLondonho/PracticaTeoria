@@ -12,6 +12,7 @@ import java.util.Arrays;
 /**
  *
  * @author Juan Carlos Londoño-Carolina García
+ * Esta clase se encarga de crear las particiones y simplificar un automata finito deterministico.
  */
 public class Simplificar {
 
@@ -20,7 +21,8 @@ public class Simplificar {
     public Simplificar() {
         
     }
-
+    //Convierte un array de Strings a una matriz.
+    //Cambia la representación de la información.
     public String[][] matrizDeterministico(ArrayList<String> deterministico) {
         String[] estado = deterministico.get(0).split("/");
         String matrizDeterministico[][] = new String[deterministico.size()][estado.length];
@@ -34,7 +36,9 @@ public class Simplificar {
         return matrizDeterministico;
 
     }
-
+    
+    //Realiza las primeras particiones de acuerdo con los estados de aceptación,
+    //este es el primer criterio para las particiones.
     public ArrayList<String> particionar(ArrayList<String> deterministico) {
         String[]estado;
         particiones.add("0");
@@ -57,6 +61,8 @@ public class Simplificar {
         return particiones;
     }
     
+    //Empieza a recorrer todas las particiones, y averiguar hacia donde
+    //estan aputantando, en caso de una nueva partición vuelve y recorre todas.
     public ArrayList<String> simplificarAutomata(ArrayList<String> a, String[][] matriz){
         a = particionar(a);
         ArrayList<String> ayuda = new ArrayList<>();
@@ -129,7 +135,7 @@ public class Simplificar {
         }
         return a;
     }
-    
+    //encuentra los estados iniciales de un automata.
     public String estadosIniciales (String[][] matriz){
         String iniciales = "";
         for(int i = 1; i < matriz.length; i++){
@@ -145,13 +151,15 @@ public class Simplificar {
     return iniciales;
     }
     
-    
+    //ordena un string
     public static String sortString(String inputString) { 
         char tempArray[] = inputString.toCharArray(); 
         Arrays.sort(tempArray); 
         return new String(tempArray); 
     } 
     
+    //luego de haber realizado la simplificación del automata, necesitamos crear la nueva tabla
+    //con la información de los nuevos estados.
     public String[][] convertirMatrizFinal(ArrayList<String> a, String[][] matriz, String[][] b){
         boolean bandera= false;
         String[][] matrizFinal = new String[a.size()+1][matriz[0].length];
@@ -194,6 +202,9 @@ public class Simplificar {
         return matrizFinal;
     }
     
+    //Despues de la simplificación el estado inicial pudo haber quedado
+    //en algún conjunto entonces necesitamos encontrarlo para saber cual va a ser el nuevo
+    //estado inicial.
     public String nuevoEstadoInicial(String iniciales, String[][] a){
         for(int i = 1; i < a.length; i++){
             String[] partes = a[i][0].split("/");

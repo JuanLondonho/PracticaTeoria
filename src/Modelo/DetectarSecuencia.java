@@ -17,6 +17,8 @@ public class DetectarSecuencia {
         
     }
     
+    //Recibe una secuencia y realiza las transiciones entre estados y retorna 
+    //el estado final y el estado de aceptación.
     public String detectar(String[][] a, String secuencia, String inicial){
         boolean bandera = false;
         String estadoActual = inicial;
@@ -50,6 +52,8 @@ public class DetectarSecuencia {
         return estadoActual;
     }
     
+    
+    //Ordena un String.
     public static String sortString(String inputString) { 
         char tempArray[] = inputString.toCharArray(); 
         Arrays.sort(tempArray); 
