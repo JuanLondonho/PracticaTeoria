@@ -23,6 +23,7 @@ public class ControladorAF {
     ArrayList<String> a;
     ConvertirADeterminisco m = new ConvertirADeterminisco();
     String[][] matrizb;
+    Detectar dec=new Detectar();
     
     Simplificar n = new Simplificar();
 
@@ -64,11 +65,11 @@ public class ControladorAF {
        int cont=0;
         for(int i = 0; i <numEstados+1; i++){
            for(int j = 0; j <numEntradas+2 ; j++){
+                
+///////////////////////////////////////////////////////////////////////////////////               
                
-               
-               
-//                dato=(String)tblAutomata.getValueAt(i, j);
-//               if(i!=0 && j==0){ 
+//               dato=(String)tblAutomata.getValueAt(i, j);
+//              if(i!=0 && j==0){ 
 //                for(int k=0; k<dato.length();k++){
 //                    if(dato.charAt(0)=='*'){
 //                        cont=cont++;
@@ -94,14 +95,18 @@ public class ControladorAF {
 //               
 
 
-
-
+////////////////////////////////////////////////////////////
 
                
                matriz[i][j]=(String)tblAutomata.getValueAt(i, j);
             }
            
         }
+        
+        System.out.println("RECONOCER"+ dec.reconocer(matriz));
+       
+        
+        
         
         a = m.ConvertirADeterminisco(matriz, operacion);
         String[][] matrizb = n.matrizDeterministico(a);
@@ -110,7 +115,7 @@ public class ControladorAF {
         tblMatriz=new JTable(matrizb.length+1,matrizb[0].length);
         tblMatriz.getTableHeader().setVisible(false);
         tblMatriz.disable();
-        //Actualizar la tabla JTable de la vista con matrizb y desabilitarla;  
+         
         
          for(int m=0;m<matrizb.length;m++){
             for(int n=0; n<matrizb[0].length;n++){
@@ -154,13 +159,10 @@ public class ControladorAF {
                 
             }
         }
-        
-        
+       
         tblMatriz=new JTable(matrizb.length,matrizb[0].length);
         tblMatriz.getTableHeader().setVisible(false);
         tblMatriz.disable();
-        
-        //Actualizar la tabla JTable de la vista con matrizb y desabilitarla;  
         for(int i =0; i < matrizb.length; i++){
             for(int j = 0; j < matrizb[0].length; j++){
               if(i!=0 && j==0){
@@ -186,10 +188,16 @@ public class ControladorAF {
      
      }
      
-     public String detectar(String secuencia){
-         DetectarSecuencia d = new DetectarSecuencia();
-         return d.detectar(matrizb, secuencia, iniciales);
-     }
-    
+    public String detectar(String secuencia) {
+        DetectarSecuencia d = new DetectarSecuencia();
+
+        String a = d.detectar(matrizb, secuencia, iniciales);
+        if (a==null) {
+            return "Entrada invalida";
+        } else {
+            return a;
+        }
+    }
+
 }
 
