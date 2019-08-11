@@ -6,11 +6,12 @@
 package Vista;
 
 import Controlador.*;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 /**
  *
- * @author juanclg
+ * @author Juan Carlos Londoño-Carolina García
  */
 public class Matriz extends javax.swing.JFrame {
 
@@ -20,8 +21,9 @@ public class Matriz extends javax.swing.JFrame {
      * Creates new form Matriz
      */
     public Matriz() {
+       //Se inicializan los componentes y se le aplican las propiedades necesarias.
        initComponents();
-       tblMatriz= ctr.crearTabla();
+       tblMatriz= ctr.crearTabla();//se crea el jtable en el cual el usario ingresa los datos del automata
        btnSimplificar.setVisible(false);
        jScrollPane.setViewportView(tblMatriz);
        tblMatriz.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -55,6 +57,8 @@ public class Matriz extends javax.swing.JFrame {
         txtSecuencia = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         lblResultado = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,81 +114,93 @@ public class Matriz extends javax.swing.JFrame {
 
         lblResultado.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
 
+        jLabel4.setText("Matriz de transición:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbxOption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(btnIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 997, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(79, 79, 79)
-                                .addComponent(btnSimplificar)
-                                .addGap(1, 1, 1)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtSecuencia, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE))
-                                .addGap(27, 27, 27)
-                                .addComponent(btnSecuencia)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnSalir)))
-                .addContainerGap())
+                        .addGap(350, 350, 350)
+                        .addComponent(lblResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbxOption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtSecuencia, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSecuencia))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(378, 378, 378)
+                        .addComponent(btnSimplificar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(btnSalir)
+                            .addGap(36, 36, 36))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 807, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap()))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
                     .addComponent(cbxOption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnIngreso))
+                    .addComponent(btnIngreso)
+                    .addComponent(jLabel1))
+                .addGap(1, 1, 1)
+                .addComponent(btnSimplificar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSecuencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSecuencia)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnSimplificar)
-                        .addComponent(jLabel2)
-                        .addComponent(txtSecuencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblResultado)
-                    .addComponent(btnSalir))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addComponent(btnSalir)
+                .addGap(7, 7, 7)
+                .addComponent(lblResultado)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jLabel3.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
+        jLabel3.setText("AUTOMATA FINITO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(43, 43, 43))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(330, 330, 330)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -192,14 +208,31 @@ public class Matriz extends javax.swing.JFrame {
 
     private void btnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoActionPerformed
         // TODO add your handling code here:
+        int cont = 0;
+        boolean bandera = false;
+        for (int i = 1; i < tblMatriz.getModel().getRowCount(); i++) {
+            for (int j = 0; j < tblMatriz.getModel().getColumnCount(); j++) {
+                if (j == 0 && ((String) tblMatriz.getValueAt(i, j)).charAt(0) == '*') {            
+                    cont++;
+                } else if ((j == tblMatriz.getModel().getColumnCount() - 1) && (((String) tblMatriz.getValueAt(i, tblMatriz.getModel().getColumnCount() - 1)).equals("1") || ((String) tblMatriz.getValueAt(i, tblMatriz.getModel().getColumnCount() - 1)).equals("0"))) {
+                    bandera = true;
+                }
+            }
+        }
 
-        tblMatriz = ctr.crearMatriz(tblMatriz, cbxOption.getSelectedIndex());
-        jScrollPane.setViewportView(tblMatriz);
-        btnSimplificar.setVisible(true);
-        btnIngreso.setVisible(false);
-        cbxOption.setVisible(false);
-        jLabel1.setVisible(false);
-
+        if (cont == 0) {           
+            JOptionPane.showMessageDialog(null, "Marque CON UN SOLO * inicial al menos un estado \n Ejemplo: *A");
+        } else if (bandera == false) {
+            JOptionPane.showMessageDialog(null, "Ingrese solo 0 y 1 en la columna final");
+            
+        } else {
+            tblMatriz = ctr.crearMatriz(tblMatriz, cbxOption.getSelectedIndex());//se llama el metodo para crear la matriz con los datos ingresados en el jtable y se realizan las operaciones que hay dentro de el
+            jScrollPane.setViewportView(tblMatriz);
+            btnSimplificar.setVisible(true);
+            btnIngreso.setVisible(false);
+            cbxOption.setVisible(false);
+            jLabel1.setVisible(false);
+        }
     }//GEN-LAST:event_btnIngresoActionPerformed
 
     private void cbxOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxOptionActionPerformed
@@ -209,7 +242,7 @@ public class Matriz extends javax.swing.JFrame {
     private void btnSimplificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimplificarActionPerformed
         // TODO add your handling code here:
 
-        tblMatriz = ctr.simplificarMatriz();
+        tblMatriz = ctr.simplificarMatriz();//se llama el metodo simplificar el cual retorna el jtable con el automata minimo
         jScrollPane.enable(false);
         jScrollPane.setViewportView(tblMatriz);
         btnSimplificar.setVisible(false);
@@ -271,6 +304,8 @@ public class Matriz extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxOption;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JLabel lblResultado;

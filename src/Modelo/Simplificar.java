@@ -7,11 +7,11 @@ package Modelo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import javax.swing.JOptionPane;
+
 
 /**
  *
- * @author carolina
+ * @author Juan Carlos Londoño-Carolina García
  */
 public class Simplificar {
 
