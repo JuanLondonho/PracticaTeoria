@@ -31,10 +31,6 @@ public class Detectar {
                                 return true;         
                        }              
                 }
-//                else if(i==0 && (estado.startsWith("*")== false)){
-//                    JOptionPane.showMessageDialog(null, "Señale con *al menos uno de los estados para indicar el estado inicial");             
-//                
-//                }
                 else if(i!=0 && estado.length()>1){
                     return validarEstadoTransicion(estado);}             
             }
@@ -67,20 +63,7 @@ public class Detectar {
         }
      return true;
     }
-    
-//    public boolean validarEstadoAceptacion(String[][] matriz){
-//        
-//        for(int i=0;i<matriz.length;i++){
-//            if(matriz[i][matriz[i].length]!="0"||matriz[i][matriz[i].length]!="1"){
-//                return false;
-//            }
-//        }
-//        
-//    return true;
-//    }
-//    
-    
-    
+        
 
 }
 

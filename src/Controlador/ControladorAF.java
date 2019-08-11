@@ -7,6 +7,7 @@ package Controlador;
 import javax.swing.JTable;
 import Modelo.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 /**
  *
  * @author juanclg
@@ -59,12 +60,49 @@ public class ControladorAF {
     }
 
    public JTable crearMatriz(JTable tblAutomata, int operacion){
+       String dato;
+       int cont=0;
         for(int i = 0; i <numEstados+1; i++){
            for(int j = 0; j <numEntradas+2 ; j++){
+               
+               
+               
+//                dato=(String)tblAutomata.getValueAt(i, j);
+//               if(i!=0 && j==0){ 
+//                for(int k=0; k<dato.length();k++){
+//                    if(dato.charAt(0)=='*'){
+//                        cont=cont++;
+//                        if(dato.charAt(j)=='*'&& dato.charAt(j)=='*'){
+//                        
+//                        }
+//                    }  
+//                 }
+//                if(cont==0){
+//                JOptionPane.showMessageDialog(null,"Indique con * al menos un estado inicial" );
+//                //return null;   
+//                }
+//               }else if(j==numEntradas+1){
+//                  for(int k=0; k<dato.length();k++){
+//                    if(dato.charAt(j)!=0 ||dato.charAt(j)!=1){
+//                       JOptionPane.showMessageDialog(null,"Ingrese solo 0 y 1" );
+//                       //return null; 
+//                        
+//                    }  
+//                 }
+//               
+//               }
+//               
+
+
+
+
+
+               
                matriz[i][j]=(String)tblAutomata.getValueAt(i, j);
             }
            
         }
+        
         a = m.ConvertirADeterminisco(matriz, operacion);
         String[][] matrizb = n.matrizDeterministico(a);
         iniciales = n.estadosIniciales(matriz);
@@ -141,4 +179,12 @@ public class ControladorAF {
         return tblMatriz;
         
      }
+     
+     public void validarDatos(String dato){
+     
+     
+     
+     }
+    
 }
+
