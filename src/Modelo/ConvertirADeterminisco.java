@@ -5,13 +5,13 @@
  */
 package Modelo;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
  *
- * @author juanclg
+ * @author Juan Carlos Londoño-Carolina García
  */
 public class ConvertirADeterminisco {
     public ArrayList<String> automata = new ArrayList<String>();
@@ -28,11 +28,7 @@ public class ConvertirADeterminisco {
         return automataConEstados(operacion);
         
     }
-    
-    
-    
-    
-    
+ 
     private void conversionRecursiva (String inicial){
         estadoActual++;
         if(!yaExiste(inicial)){

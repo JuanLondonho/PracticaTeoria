@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 /**
  *
- * @author juanclg
+ * @author Juan Carlos Londoño-Carolina García
  */
 public class DetectarSecuencia {
     

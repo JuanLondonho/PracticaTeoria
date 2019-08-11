@@ -7,16 +7,16 @@ package Vista;
 
 
 import java.awt.event.KeyEvent;
-import javax.swing.JOptionPane;
 import Controlador.*;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author juanclg
+ * @author Juan Carlos Londoño-Carolina García
  */
 public class AutomataUI extends javax.swing.JFrame {
     
-    ControladorAF ctr= ControladorAF.getCtr();
+    ControladorAF ctr= ControladorAF.getCtr();//instancia de la clase controlador
 
   
     public AutomataUI() {
@@ -37,6 +37,10 @@ public class AutomataUI extends javax.swing.JFrame {
         txtNumeroEntradas = new javax.swing.JTextField();
         txtNumeroEstados = new javax.swing.JTextField();
         btnAceptar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,32 +73,60 @@ public class AutomataUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Ingrese el número de filas:");
+
+        jLabel2.setText("Ingrese el numero de columnas:");
+
+        jLabel3.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        jLabel3.setText("AUTOMATA FINITO");
+
+        jLabel4.setText("Tamaño para la matriz de transición");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(139, 139, 139))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(btnAceptar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNumeroEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNumeroEstados, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(60, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNumeroEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNumeroEstados, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel4)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(203, 203, 203)
+                        .addComponent(btnAceptar)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
-                .addComponent(txtNumeroEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(txtNumeroEstados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNumeroEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNumeroEstados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAceptar)
-                .addGap(94, 94, 94))
+                .addGap(6, 6, 6))
         );
 
         pack();
@@ -110,6 +142,7 @@ public class AutomataUI extends javax.swing.JFrame {
 
     private void txtNumeroEstadosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroEstadosKeyTyped
         // TODO add your handling code here:
+        //Se valida que en los txt solo se puedan ingresar numeros.
         char c =evt.getKeyChar();
         if(!Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE){
             evt.consume();
@@ -122,10 +155,17 @@ public class AutomataUI extends javax.swing.JFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
+        
+        //si los valores son los esperados se crea una instancia de la clase matriz y se crea el jtable se hacen las recomendaciones para el correcto funcionamiento del programa.
         if(!txtNumeroEntradas.getText().equals("") &&  !txtNumeroEstados.getText().equals("")){
             this.setVisible(false);
            
             ctr.entradasTabla(Integer.parseInt(txtNumeroEntradas.getText()), Integer.parseInt(txtNumeroEstados.getText()));
+            JOptionPane.showMessageDialog(null, "Tenga en cuenta las siguentes convenciones:"
+                    + "\n 1.Evite nombrar estados usando - / * ya que son caracteres especiales para el funcionamiento."
+                    + "\n 2.Señale su estado (o estados) inicial CON UN solo * al inicio(no use más de uno)\n °Ejm: *nombreEstado"
+                    + "\n 3.Si es un AFND y una entrada puede tener dos salidas o mas indiquelo separando por - (no use más de uno para separlos) \n °Ejm: nombreEstado1-nombreEstado2 "
+                    + "\n 5.Presione la tecla enter una vez termine de llenar la matriz");
             Matriz au = new Matriz();
             au.setVisible(true);
         }else{
@@ -175,6 +215,10 @@ public class AutomataUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txtNumeroEntradas;
     private javax.swing.JTextField txtNumeroEstados;
     // End of variables declaration//GEN-END:variables
