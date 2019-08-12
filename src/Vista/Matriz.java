@@ -162,7 +162,7 @@ public class Matriz extends javax.swing.JFrame {
                                 .addContainerGap())))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnSalir)
-                        .addGap(401, 401, 401))))
+                        .addGap(396, 396, 396))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,10 +188,10 @@ public class Matriz extends javax.swing.JFrame {
                         .addComponent(btnSecuencia)
                         .addComponent(jLabel2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(lblResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalir)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel3.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
@@ -229,8 +229,10 @@ public class Matriz extends javax.swing.JFrame {
             for (int j = 0; j < tblMatriz.getModel().getColumnCount(); j++) {
                 if (j == 0 && ((String) tblMatriz.getValueAt(i, j)).charAt(0) == '*') {            
                     cont++;
-                } else if ((j == tblMatriz.getModel().getColumnCount() - 1) && (((String) tblMatriz.getValueAt(i, tblMatriz.getModel().getColumnCount() - 1)).equals("1") || ((String) tblMatriz.getValueAt(i, tblMatriz.getModel().getColumnCount() - 1)).equals("0"))) {
-                    
+                } else if (((String) tblMatriz.getValueAt(i,  tblMatriz.getModel().getColumnCount() - 1)).length()==1 &&
+                        (j == tblMatriz.getModel().getColumnCount() - 1) && 
+                        (((String) tblMatriz.getValueAt(i, tblMatriz.getModel().getColumnCount() - 1)).equals("1") || ((String) tblMatriz.getValueAt(i, tblMatriz.getModel().getColumnCount() - 1)).equals("0"))) {
+                    System.out.println("hpta"+(String) tblMatriz.getValueAt(i,  tblMatriz.getModel().getColumnCount() - 1));
                     bandera = true;
                 }
             }
